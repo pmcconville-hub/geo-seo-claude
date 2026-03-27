@@ -210,11 +210,11 @@ main() {
     print_info "Installing Python dependencies..."
 
     if [ -f "$SOURCE_DIR/requirements.txt" ]; then
-        $PYTHON_CMD -m pip install -r "$SOURCE_DIR/requirements.txt" --quiet 2>/dev/null && {
+        $PYTHON_CMD -m pip install --user -r "$SOURCE_DIR/requirements.txt" --quiet 2>/dev/null && {
             print_success "Python dependencies installed"
         } || {
             print_warning "Some Python dependencies failed to install."
-            echo "  Run manually: $PYTHON_CMD -m pip install -r requirements.txt"
+            echo "  Run manually: $PYTHON_CMD -m pip install --user -r requirements.txt"
             cp "$SOURCE_DIR/requirements.txt" "$INSTALL_DIR/"
         }
     fi
